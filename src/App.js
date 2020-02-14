@@ -1,26 +1,12 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Admin, Resource } from 'react-admin';
+import drfProvider from 'ra-data-drf';
+import { UserList } from './users';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => (
+    <Admin dataProvider={drfProvider('http://ec2-3-136-154-4.us-east-2.compute.amazonaws.com')}>
+        <Resource name="users" list={UserList} />
+    </Admin>
+);
 
 export default App;
